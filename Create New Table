@@ -1,0 +1,31 @@
+CREATE TABLE family
+      (id INTEGER,
+       name TEXT,
+       relation TEXT,
+       age INTEGER,
+      birthday DATE);
+INSERT INTO family (id, name, relation, age, birthday)
+VALUES (1, 'Shuwei', 'myself', 30,'1989-04-02');
+INSERT INTO family (id, name, relation, age,birthday)
+VALUES (2, 'Dewei', 'husband', 32,'1987-12-04');
+INSERT INTO family (id, name, relation, age,birthday)
+VALUES (3, 'Haley', 'daughter', 2,'2017-08-12');
+INSERT INTO family (id, name, relation, age,birthday)
+VALUES (4, 'Hayden', 'son', 1,'2019-02-02');
+SELECT * FROM family;
+ALTER TABLE family
+ADD gender TEXT;
+SELECT*FROM family;
+UPDATE family
+SET gender = 'Female'
+WHERE id = 1 or id =3;
+
+UPDATE family
+SET gender = 'Male'
+WHERE id = 2 or id =4;
+
+INSERT INTO family (id, name, relation, age,birthday,gender)
+VALUES (5, 'Lili', 'sister', 16 ,'2003-03-31','Female');
+DELETE FROM family
+WHERE id=5;
+SELECT*FROM family;
