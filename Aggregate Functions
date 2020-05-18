@@ -1,0 +1,50 @@
+Aggreate Function
+Count:
+SELECT COUNT(*) 
+FROM fake_apps
+WHERE price = 0;
+
+Sum:
+SELECT SUM(downloads)
+FROM fake_apps;
+
+Max and Min:
+SELECT MAX(downloads)
+FROM fake_apps;
+
+Average:
+SELECT AVG(downloads)
+FROM fake_apps;
+
+Round:
+SELECT AVG(downloads)
+FROM fake_apps;
+
+select round(avg(price), 2)from fake_apps;
+
+Group by:
+select category, sum(downloads) from fake_apps
+group by category
+order by downloads desc;
+
+SELECT ROUND(imdb_rating),
+   COUNT(name)
+FROM movies
+GROUP BY 1
+ORDER BY 1;
+
+select price, round(avg(downloads)), count(*) from fake_apps
+group by price
+having count(*)>=10;
+
+select first_name, count(first_name) from users
+group by first_name
+order by 2 desc;
+
+select user_id, sum(watch_duration_in_minutes) from watch_history
+group by 1
+having sum(watch_duration_in_minutes)>400;
+
+
+
+
