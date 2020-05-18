@@ -1,0 +1,67 @@
+Multiple Tables
+Inner Join: When we perform a simple JOIN (often called an inner join) our result only includes rows that match our ON condition
+select*from orders
+join subscriptionsWith previous_query as 
+(select customer_id, count(subscription_id)as 'subscriptions' from orders
+group by customer_id)
+select customers.customer_name,previous_query.subscriptions from previous_query
+join customers
+  on customers.customer_id=previous_query.customer_id;
+  on subscriptions.subscription_id=
+  orders.subscription_id
+where subscriptions.description='Fashion Magazine';
+
+Left Join: A left join will keep all rows from the first table, regardless of whether there is a matching row in the second table.
+SELECT count(*)
+FROM newspaper
+LEFT JOIN online
+  ON newspaper.id = online.id
+WHERE online.id IS NULL;
+
+Cross join:
+SELECT shirts.shirt_color,
+   pants.pants_color
+FROM shirts
+CROSS JOIN pants;
+
+Union:
+•	Tables must have the same number of columns.
+•	The columns must have the same data types in the same order as the first table.
+select*from newspaper
+union
+select*from online;
+
+select*from songs 
+union 
+select*from bonus_songs
+limit 10;
+
+With: 
+The WITH statement allows us to perform a separate queryWith previous_query as 
+(select customer_id, count(subscription_id)as 'subscriptions' from orders
+group by customer_id)
+select customers.customer_name,previous_query.subscriptions from previous_query
+join customers
+  on customers.customer_id=previous_query.customer_id;
+
+With play_count as
+(Select song_id, count(*) as 'times_played'
+from plays
+group by song_id)
+
+select songs.title, songs.artist, play_count.times_played from songs
+join play_count
+  on songs.id=play_count.song_id
+order by 3 desc;
+
+with previous_query as
+(select premium_users.user_id as 'users', plans.description as 'plan' from plans
+join premium_users
+  on plans.id=premium_users.membership_plan_id)
+
+select users.gender as 'Gender', previous_query.plan as 'Plan' from users
+join previous_query
+  on previous_query.users= users.id
+group by Gender;
+
+
